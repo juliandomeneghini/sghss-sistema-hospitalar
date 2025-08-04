@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGHSS - Sistema de Gestão Hospitalar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .api-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .api-info h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .endpoint {
+            background: #e9ecef;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .status {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+        
+        .features {
+            text-align: left;
+            margin: 2rem 0;
+        }
+        
+        .features h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .features li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🏥 SGHSS</div>
+        <div class="subtitle">Sistema de Gestão Hospitalar e de Serviços de Saúde</div>
+        
+        <div class="status">API Online ✓</div>
+        
+        <div class="api-info">
+            <h3>Endpoints da API</h3>
+            <div class="endpoint">GET /api/status - Status da API</div>
+            <div class="endpoint">POST /api/register - Registro de usuários</div>
+            <div class="endpoint">POST /api/login - Autenticação</div>
+            <div class="endpoint">GET /api/pacientes - Listar pacientes</div>
+            <div class="endpoint">POST /api/pacientes - Cadastrar paciente</div>
+            <div class="endpoint">GET /api/consultas - Listar consultas</div>
+            <div class="endpoint">POST /api/consultas - Agendar consulta</div>
+        </div>
+        
+        <div class="features">
+            <h3>Funcionalidades Implementadas</h3>
+            <ul>
+                <li>Autenticação JWT segura</li>
+                <li>Gestão completa de pacientes (CRUD)</li>
+                <li>Sistema de agendamento de consultas</li>
+                <li>Prontuários médicos eletrônicos</li>
+                <li>Controle de acesso por perfil de usuário</li>
+                <li>Conformidade com LGPD</li>
+                <li>API RESTful documentada</li>
+                <li>Validação robusta de dados</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Desenvolvido como projeto acadêmico</p>
+            <p>Versão 1.0.0 - 2025</p>
+        </div>
+    </div>
+    
+    <script>
+        // Verificar status da API
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Status da API:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao verificar status da API:', error);
+            });
+    </script>
+</body>
+</html>
+
