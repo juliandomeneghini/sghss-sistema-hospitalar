@@ -1,6 +1,7 @@
 import os
 import sys
-# DON'T CHANGE THIS !!!
+
+# Adiciona o diretório pai ao path para encontrar os módulos
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
@@ -33,9 +34,19 @@ app.register_blueprint(auth_bp, url_prefix='/api')
 app.register_blueprint(pacientes_bp, url_prefix='/api')
 app.register_blueprint(consultas_bp, url_prefix='/api')
 
-# Configuração do banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+# --- CONFIGURAÇÃO DO BANCO DE DADOS ---
+
+# Define o caminho para o diretório do banco de dados
+db_dir = os.path.join(os.path.dirname(__file__), 'database')
+
+# Cria o diretório se ele não existir (ESSA É A CORREÇÃO PRINCIPAL)
+os.makedirs(db_dir, exist_ok=True)
+
+# Configuração do banco de dados usando o caminho absoluto
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(db_dir, 'app.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# ------------------------------------
 
 # Inicializar banco de dados
 db.init_app(app)
@@ -68,7 +79,7 @@ def api_status():
         'version': '1.0.0'
     }
 
-# Handler de erro para JWT
+# Handlers de erro para JWT
 @jwt.expired_token_loader
 def expired_token_callback(jwt_header, jwt_payload):
     return {'error': 'Token expirado'}, 401
