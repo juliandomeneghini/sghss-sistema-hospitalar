@@ -8,7 +8,7 @@ auth_bp = Blueprint("auth_bp", __name__)
 
 def validar_email(email):
     """Valida se o email está no formato correto."""
-    pattern = r'^[a-zA-Z0--9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' 
     return re.match(pattern, email) is not None
 
 def validar_senha(senha):
